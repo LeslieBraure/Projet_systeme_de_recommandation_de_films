@@ -2,20 +2,12 @@ import streamlit as st
 import pandas as pd
 from datetime import date, time
 import streamlit as st
-import streamlit as st
-# Importation du module
 from streamlit_option_menu import option_menu
 from sklearn.neighbors import NearestNeighbors
 from sklearn.preprocessing import MinMaxScaler
-import streamlit as st
-import pandas as pd
-from datetime import date, time
-import streamlit as st
-import streamlit as st
+import PyPDF2
+import requests
 # Importation du module
-from streamlit_option_menu import option_menu
-from sklearn.neighbors import NearestNeighbors
-from sklearn.preprocessing import MinMaxScaler
 
 
 # Fonction pour chaque page
@@ -94,6 +86,23 @@ def etude_de_marche():
     st.header("Étude de marché")
     st.write("Analyse détaillée du marché cible et des tendances.")
 
+
+
+
+
+# Lien Google Drive
+    pdf_url = "https://drive.google.com/file/d/12FTBjNCDPP3eGRSxeC8vKBeBLVxJTkdg/view?usp=sharing"
+
+# Télécharger le fichier PDF
+    response = requests.get(pdf_url)
+    pdf_content = response.content
+
+# Afficher un lien pour télécharger le PDF
+    st.write("[Cliquez ici pour visualiser la présentation remise au client](https://drive.google.com/file/d/12FTBjNCDPP3eGRSxeC8vKBeBLVxJTkdg/view?usp=sharing)")
+
+
+
+
 def kpi():
     st.header("KPI")
     st.write("Présentation des indicateurs clés de performance (KPI).")
@@ -121,12 +130,6 @@ def machine_learning():
 
 
 def systeme_recommandation():
-    st.header("Système de recommandation de films")
-    st.write("Exemple de système de recommandation basé sur des modèles ML.")
-
-
-
-
 
 
 
