@@ -65,11 +65,6 @@ def presentation():
         Ce projet a été réalisé dans le cadre de notre formation de data analyst à la Wild Code School et a permis de démontrer l'efficacité des systèmes de recommandation dans l'industrie du cinéma.
         Le projet "Système de recommandation de films" a pour objectif de créer une application permettant à l'utilisateur de recevoir des recommandations de films en fonction de ses préférences.
         Ce système utilise des modèles de machine learning pour analyser les goûts des utilisateurs et leur proposer des films qu'ils pourraient apprécier. Nous avons utilisé plusieurs algorithmes de filtrage collaboratif et de filtrage basé sur le contenu.
-    hkjshsdhqsdjh:
-* sdfqsd
-* hghjgjhg
-* jhghjgjgj
-    
     """)
 
     # Ajout de logos ou d'illustrations pour illustrer le projet
@@ -131,6 +126,41 @@ def kpi():
 def machine_learning():
     st.header("Machine Learning")
     st.write("Explications et implémentations des modèles de machine learning.")
+
+        st.write("""
+Dans cette section, nous expliquons la mise en œuvre et le fonctionnement du modèle de machine learning utilisé pour alimenter notre système de recommandation de films.
+
+Étapes mises en œuvre: 
+
+1 - Prétraitement des Données :
+Normalisation des caractéristiques numériques, comme les notes moyennes, avec MinMaxScaler pour garantir une cohérence entre les différentes plages de données.
+Transformation des données de genres en colonnes binaires pour faciliter leur traitement.
+
+2 - Choix du Modèle :
+Nous avons utilisé un modèle K-Nearest Neighbors (KNN) pour les recommandations.
+Le modèle calcule la similarité entre les films en fonction de caractéristiques comme les genres et les notes, en utilisant la similarité cosinus comme métrique de distance.
+
+3 - Entraînement du Modèle :
+Le modèle KNN a été entraîné pour trouver les 10 films les plus similaires à tout film donné dans le dataset.
+
+4- Fonction de Recommandation :
+L’utilisateur saisit un titre de film. Le modèle identifie les correspondances les plus proches et retourne une liste de films recommandés.
+Les recommandations sont triées et affichées pour la commodité de l’utilisateur.
+
+Caractéristiques Clés: 
+
+* Recommandations Précises : La métrique de similarité cosinus garantit des suggestions très pertinentes.
+* Saisie Dynamique : Recherche insensible à la casse pour plus de facilité d’utilisation.
+* Intégration Transparente : Les résultats sont directement transmis à l’interface de l’application.
+
+Pourquoi KNN ?:
+
+* Simplicité : Facile à mettre en œuvre et à interpréter.
+* Efficacité : Fonctionne bien avec des datasets riches en fonctionnalités comme le nôtre.
+    """)
+
+
+
 
 
 def systeme_recommandation():
