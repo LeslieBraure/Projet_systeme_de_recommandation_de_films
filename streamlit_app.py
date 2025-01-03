@@ -316,15 +316,7 @@ def ameliorations():
     * Système de recommandation du film : lien hypertexte vers TMDB​
     * Création d’une application iOS / Android​
 ​    * DataFrame actualisé quotidiennement de manière automatisée​
- 
     """)
-
-
-
-
-
-​
-​
 
 
 # Menu dans la barre latérale
