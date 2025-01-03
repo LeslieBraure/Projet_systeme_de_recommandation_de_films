@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 from datetime import date, time
 import streamlit as st
-from streamlit_authenticator import Authenticate
 import streamlit as st
 # Importation du module
 from streamlit_option_menu import option_menu
@@ -12,7 +11,6 @@ import streamlit as st
 import pandas as pd
 from datetime import date, time
 import streamlit as st
-from streamlit_authenticator import Authenticate
 import streamlit as st
 # Importation du module
 from streamlit_option_menu import option_menu
