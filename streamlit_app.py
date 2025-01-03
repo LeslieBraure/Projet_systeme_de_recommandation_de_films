@@ -142,23 +142,25 @@ def machine_learning():
     st.header("Machine Learning")
     st.write("Explications et implémentations des modèles de machine learning.")
 
-    st.write("""
-Dans cette section, nous expliquons la mise en œuvre et le fonctionnement du modèle de machine learning utilisé pour alimenter notre système de recommandation de films.
+    st.markdown(
+    """
+    <p style="text-align: justify;">
+        Dans cette section, nous expliquons la mise en œuvre et le fonctionnement du modèle de machine learning utilisé pour alimenter notre système de recommandation de films.
 
 Étapes mises en œuvre:
 
-1 - Prétraitement des Données :
+<u><b>1 - Prétraitement des Données :</b></u>
 Normalisation des caractéristiques numériques, comme les notes moyennes, avec MinMaxScaler pour garantir une cohérence entre les différentes plages de données.
 Transformation des données de genres en colonnes binaires pour faciliter leur traitement.
 
-2 - Choix du Modèle :
+<u><b>2 - Choix du Modèle :</b></u>
 Nous avons utilisé un modèle K-Nearest Neighbors (KNN) pour les recommandations.
 Le modèle calcule la similarité entre les films en fonction de caractéristiques comme les genres et les notes, en utilisant la similarité cosinus comme métrique de distance.
 
-3 - Entraînement du Modèle :
+<u><b>3 - Entraînement du Modèle :</b></u>
 Le modèle KNN a été entraîné pour trouver les 10 films les plus similaires à tout film donné dans le dataset.
 
-4- Fonction de Recommandation :
+<u><b>4- Fonction de Recommandation :</b></u>
 L’utilisateur saisit un titre de film. Le modèle identifie les correspondances les plus proches et retourne une liste de films recommandés.
 Les recommandations sont triées et affichées pour la commodité de l’utilisateur.
 
@@ -172,9 +174,12 @@ Pourquoi KNN ?:
 
 * Simplicité : Facile à mettre en œuvre et à interpréter.
 * Efficacité : Fonctionne bien avec des datasets riches en fonctionnalités comme le nôtre.
-    """)
+    
 
-
+    </p>
+    """, 
+    unsafe_allow_html=True
+)
 
 
     st.write("""
