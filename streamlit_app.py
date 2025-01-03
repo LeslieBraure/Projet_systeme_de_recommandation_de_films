@@ -182,7 +182,7 @@ st.write("""
     """)
 
 
-    code = """
+code = """
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.neighbors import NearestNeighbors
