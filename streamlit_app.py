@@ -313,7 +313,7 @@ def ameliorations():
     st.write("Suggestions et pistes pour améliorer le projet.")
 
 
-st.markdown(
+    st.markdown(
     """
         * Système de recommandation du film : lien hypertexte vers TMDB
     ​
