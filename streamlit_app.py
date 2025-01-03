@@ -65,6 +65,11 @@ def presentation():
         Ce projet a été réalisé dans le cadre de notre formation de data analyst à la Wild Code School et a permis de démontrer l'efficacité des systèmes de recommandation dans l'industrie du cinéma.
         Le projet "Système de recommandation de films" a pour objectif de créer une application permettant à l'utilisateur de recevoir des recommandations de films en fonction de ses préférences.
         Ce système utilise des modèles de machine learning pour analyser les goûts des utilisateurs et leur proposer des films qu'ils pourraient apprécier. Nous avons utilisé plusieurs algorithmes de filtrage collaboratif et de filtrage basé sur le contenu.
+    hkjshsdhqsdjh:
+* sdfqsd
+* hghjgjhg
+* jhghjgjgj
+    
     """)
 
     # Ajout de logos ou d'illustrations pour illustrer le projet
