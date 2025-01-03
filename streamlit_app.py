@@ -177,59 +177,44 @@ def systeme_recommandation():
     # Utiliser le premier titre correspondant
         index = matches.index[0]
         distances, indices = model.kneighbors([features[index]])
-        recommendations = df.iloc[indices[0]]['title_x'].tolist()
-        recommendations.remove(df.loc[index, 'title_x'])
-        return None, [df.loc[index, 'poster_path']] + [df.loc[i, 'poster_path'] for i in indices[0] if i != index]
-# Application Streamlit
+        recommendations = df.iloc[indices[0]]
+        return None, recommendations
+
+    def get_movie_description(movie_id):
+        api_key = "b74f8b71dc821678ceae993159831e61"
+        url = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key={api_key}&language=fr-FR"
+        response = requests.get(url)
+        if response.status_code == 200:
+            return response.json().get("overview", "Description non disponible")
+        else:
+            return "Erreur lors de la récupération des données."
+
+    # Application Streamlit
     st.title("Système de Recommandation de Films")
-# Barre de recherche
+
+    # Barre de recherche
     query = st.text_input("Entrez le titre d'un film :")
     if query:
-    # Utilisation de votre fonction `films_recommandes`
-        error, posters = films_recommandes(query, df, knn, features)
-    # Afficher les recommandations
+        error, recommendations = films_recommandes(query, df, knn, features)
         if error:
             st.write(error)
         else:
-            cols_per_row = 4  # Définir le nombre d'affiches par ligne
-            columns = st.columns(cols_per_row)
-            for idx, poster in enumerate(posters):
+            for _, row in recommendations.iterrows():
                 try:
                 # Générer l'URL complète de l'affiche
-                    image_url = f"https://image.tmdb.org/t/p/w500{poster}"
-                # Afficher dans la colonne correspondante
-                    with columns[idx % cols_per_row]:
-                     st.image(image_url, use_container_width=True)
-                # Commencer une nouvelle ligne après `cols_per_row` affiches
-                    if (idx + 1) % cols_per_row == 0:
-                        columns = st.columns(cols_per_row)  # Créer une nouvelle ligne
-                except IndexError:
-                    pass
+                    image_url = f"https://image.tmdb.org/t/p/w500{row['poster_path']}"
+                    description = get_movie_description(row['tconst'])
 
-# Afficher les recommandations
-        if error:
-            st.write(error)
-        else:
-            cols_per_row = 4 # Définir le nombre d'affiches par ligne
-            columns = st.columns(cols_per_row)
-
-# Afficher dans la colonne correspondante
-            with columns[idx % cols_per_row]:
+                # Afficher l'image à gauche et la description à droite
+                    col1, col2 = st.columns([1, 3])
+                    with col1:
                         st.image(image_url, use_container_width=True)
-                # Commencer une nouvelle ligne après `cols_per_row` affiches
-            if (idx + 1) % cols_per_row == 0:
-                        columns = st.columns(cols_per_row)  # Créer une nouvelle ligne
-
-
-
-
-
-
-
-
-
-
-
+                    with col2:
+                        st.write(f"**Titre :** {row['title_x']}")
+                        
+                        st.write(f"**Description :** {description}")
+                except Exception as e:
+                    st.write(f"Erreur lors de l'affichage des recommandations : {e}")
 
 def ameliorations():
     st.header("Améliorations")
