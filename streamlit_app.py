@@ -312,6 +312,21 @@ def ameliorations():
     st.header("Améliorations")
     st.write("Suggestions et pistes pour améliorer le projet.")
 
+    st.write("""
+    * Système de recommandation du film : lien hypertexte vers TMDB​
+    * Création d’une application iOS / Android​
+​    * DataFrame actualisé quotidiennement de manière automatisée​
+ 
+    """)
+
+
+
+
+
+​
+​
+
+
 # Menu dans la barre latérale
 menu = [
     "Présentation",
