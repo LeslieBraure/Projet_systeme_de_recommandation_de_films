@@ -2,3 +2,4 @@ streamlit
 pandas
 streamlit
 streamlit-option-menu
+scikit-learn
