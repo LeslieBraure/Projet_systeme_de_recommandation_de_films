@@ -130,7 +130,7 @@ def machine_learning():
     st.write("""
 Dans cette section, nous expliquons la mise en œuvre et le fonctionnement du modèle de machine learning utilisé pour alimenter notre système de recommandation de films.
 
-<ins>Étapes mises en œuvre:</ins> 
+Étapes mises en œuvre:
 
 1 - Prétraitement des Données :
 Normalisation des caractéristiques numériques, comme les notes moyennes, avec MinMaxScaler pour garantir une cohérence entre les différentes plages de données.
@@ -147,13 +147,13 @@ Le modèle KNN a été entraîné pour trouver les 10 films les plus similaires 
 L’utilisateur saisit un titre de film. Le modèle identifie les correspondances les plus proches et retourne une liste de films recommandés.
 Les recommandations sont triées et affichées pour la commodité de l’utilisateur.
 
-<ins>Caractéristiques Clés:</ins> 
+Caractéristiques Clés:
 
 * Recommandations Précises : La métrique de similarité cosinus garantit des suggestions très pertinentes.
 * Saisie Dynamique : Recherche insensible à la casse pour plus de facilité d’utilisation.
 * Intégration Transparente : Les résultats sont directement transmis à l’interface de l’application.
 
-<ins>Pourquoi KNN ?:</ins> 
+Pourquoi KNN ?:
 
 * Simplicité : Facile à mettre en œuvre et à interpréter.
 * Efficacité : Fonctionne bien avec des datasets riches en fonctionnalités comme le nôtre.
