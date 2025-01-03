@@ -316,9 +316,7 @@ def ameliorations():
     st.markdown(
     """
         * Système de recommandation du film : lien hypertexte vers TMDB
-    ​
         * Création d’une application iOS / Android​
-    
 ​        * DataFrame actualisé quotidiennement de manière automatisée​
     
         """, 
