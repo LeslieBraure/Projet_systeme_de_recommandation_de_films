@@ -174,8 +174,40 @@ Pourquoi KNN ?:
 * Efficacité : Fonctionne bien avec des datasets riches en fonctionnalités comme le nôtre.
     """)
 
+code = """
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.neighbors import NearestNeighbors
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler
+import pandas as pd
+#Utilisation de get.dummies
+df['genres_x'].str.get_dummies()
+df = pd.concat([df , df['genres_x'].str.get_dummies()], axis = 1)
+# Garder les colonnes utiles
+numeric_columns = df.select_dtypes(include=['number'])
+# Normaliser les colonnes numériques
+scaler = MinMaxScaler()
+features = scaler.fit_transform(numeric_columns)
+# Normaliser les colonnes numériques (incluant la note moyenne)
+scaler = MinMaxScaler()
+# Modèle KNN
+knn = NearestNeighbors(n_neighbors=10, metric='cosine')
+knn.fit(features)
+# Fonction pour recommander des films
+def films_recommandes(title, df, model, features):
+    title = title.strip().lower()
+    matches = df[df['title_x'].str.lower() == title]
+    if matches.empty:
+        return f"Le film '{title}' n'existe pas dans le dataset."
+    index = matches.index[0]
+    distances, indices = model.kneighbors([features_2[index]])
+    recommendations = df.iloc[indices[0]]['title_x'].tolist()
+    recommendations.remove(df.loc[index, 'title_x'])
+    return recommendations
+"""
 
-
+st.code(code, language='python')
 
 
 def systeme_recommandation():
