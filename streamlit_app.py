@@ -1,151 +1,267 @@
 import streamlit as st
 import pandas as pd
-import math
-from pathlib import Path
+from datetime import date, time
+import streamlit as st
+from streamlit_authenticator import Authenticate
+import streamlit as st
+# Importation du module
+from streamlit_option_menu import option_menu
+from sklearn.neighbors import NearestNeighbors
+from sklearn.preprocessing import MinMaxScaler
+import streamlit as st
+import pandas as pd
+from datetime import date, time
+import streamlit as st
+from streamlit_authenticator import Authenticate
+import streamlit as st
+# Importation du module
+from streamlit_option_menu import option_menu
+from sklearn.neighbors import NearestNeighbors
+from sklearn.preprocessing import MinMaxScaler
 
-# Set the title and favicon that appear in the Browser's tab bar.
-st.set_page_config(
-    page_title='GDP dashboard',
-    page_icon=':earth_americas:', # This is an emoji shortcode. Could be a URL too.
-)
 
-# -----------------------------------------------------------------------------
-# Declare some useful functions.
+# Fonction pour chaque page
+def presentation():
+    # Centrer le titre avec du HTML
+    st.markdown(
+        """
+        <h1 style="text-align: center;">Projet 2: Système de recommandation de films</h1>
+        """, 
+        unsafe_allow_html=True
+    )
+    
+    # Centrer le logo avec st.image() et des colonnes
+    col1, col2, col3 = st.columns([1, 2, 1])  # Trois colonnes, celle du milieu est plus large
+    with col2:
+        st.image("logoPopCornCoders.jpg", width=200)
 
-@st.cache_data
-def get_gdp_data():
-    """Grab GDP data from a CSV file.
-
-    This uses caching to avoid having to read the file every time. If we were
-    reading from an HTTP endpoint instead of a file, it's a good idea to set
-    a maximum age to the cache with the TTL argument: @st.cache_data(ttl='1d')
-    """
-
-    # Instead of a CSV on disk, you could read from an HTTP endpoint here too.
-    DATA_FILENAME = Path(__file__).parent/'data/gdp_data.csv'
-    raw_gdp_df = pd.read_csv(DATA_FILENAME)
-
-    MIN_YEAR = 1960
-    MAX_YEAR = 2022
-
-    # The data above has columns like:
-    # - Country Name
-    # - Country Code
-    # - [Stuff I don't care about]
-    # - GDP for 1960
-    # - GDP for 1961
-    # - GDP for 1962
-    # - ...
-    # - GDP for 2022
-    #
-    # ...but I want this instead:
-    # - Country Name
-    # - Country Code
-    # - Year
-    # - GDP
-    #
-    # So let's pivot all those year-columns into two: Year and GDP
-    gdp_df = raw_gdp_df.melt(
-        ['Country Code'],
-        [str(x) for x in range(MIN_YEAR, MAX_YEAR + 1)],
-        'Year',
-        'GDP',
+# Centrer le texte "Bienvenue sur ce site..." avec st.markdown
+    st.markdown(
+        """
+        <h2 style="text-align: center; font-size: 28px;">Bienvenue sur ce site qui présente le projet réalisé par : </h2>
+        """, 
+        unsafe_allow_html=True
     )
 
-    # Convert years from string to integers
-    gdp_df['Year'] = pd.to_numeric(gdp_df['Year'])
+# Liste des prénoms avec une taille de police augmentée
+    st.markdown(
+        """
+        <p style="font-size: 40px; text-align: center;">
+            Benjamin, Leslie, Reem, William's
+        </p>
+        """, 
+        unsafe_allow_html=True
+    )
 
-    return gdp_df
 
-gdp_df = get_gdp_data()
+ # Détail du projet
+    st.markdown(
+        """
+        <h3 style="text-align: center; font-size: 30px;">Détail du projet</h3>
+        """, 
+        unsafe_allow_html=True
+    )
 
-# -----------------------------------------------------------------------------
-# Draw the actual page
+    st.write("""
+        Nous sommes Data Analyst freelance. Un cinéma en perte de vitesse situé dans la Creuse nous a contacté. Il a décidé de passer le cap du digital en créant un site Internet taillé pour les locaux.
+        Ce projet a été réalisé dans le cadre de notre formation de data analyst à la Wild Code School et a permis de démontrer l'efficacité des systèmes de recommandation dans l'industrie du cinéma.
+        Le projet "Système de recommandation de films" a pour objectif de créer une application permettant à l'utilisateur de recevoir des recommandations de films en fonction de ses préférences.
+        Ce système utilise des modèles de machine learning pour analyser les goûts des utilisateurs et leur proposer des films qu'ils pourraient apprécier. Nous avons utilisé plusieurs algorithmes de filtrage collaboratif et de filtrage basé sur le contenu.
+    """)
 
-# Set the title that appears at the top of the page.
-'''
-# :earth_americas: GDP dashboard
+    # Ajout de logos ou d'illustrations pour illustrer le projet
+   # 3 colonnes, 2 lignes de logos
+    col1, col2, col3 = st.columns(3)  # Première ligne de 3 colonnes
+    with col1:
+        st.image("IMDB_Logo_2016.png", width=100) 
 
-Browse GDP data from the [World Bank Open Data](https://data.worldbank.org/) website. As you'll
-notice, the data only goes to 2022 right now, and datapoints for certain years are often missing.
-But it's otherwise a great (and did I mention _free_?) source of data.
-'''
+    with col2:
+        st.image("streamlit.png", width=100)
 
-# Add some spacing
-''
-''
+    with col3:
+        st.image("slack.png", width=100)
 
-min_value = gdp_df['Year'].min()
-max_value = gdp_df['Year'].max()
+    col4, col5, col6 = st.columns(3)  # Deuxième ligne de 3 colonnes
+    with col4:
+        st.image("google colab.png", width=100)
 
-from_year, to_year = st.slider(
-    'Which years are you interested in?',
-    min_value=min_value,
-    max_value=max_value,
-    value=[min_value, max_value])
+    with col5:
+        st.image("python.jpg", width=100)
 
-countries = gdp_df['Country Code'].unique()
+    with col6:
+        st.image("scikitlearn.png", width=100)
 
-if not len(countries):
-    st.warning("Select at least one country")
 
-selected_countries = st.multiselect(
-    'Which countries would you like to view?',
-    countries,
-    ['DEU', 'FRA', 'GBR', 'BRA', 'MEX', 'JPN'])
+def etude_de_marche():
+    st.header("Étude de marché")
+    st.write("Analyse détaillée du marché cible et des tendances.")
 
-''
-''
-''
+def kpi():
+    st.header("KPI")
+    st.write("Présentation des indicateurs clés de performance (KPI).")
+    # Texte présentant les KPI retenus
+    st.write("""
+        Notre système de recommandations de films est basé sur les KPI suivants :
+    """)
 
-# Filter the data
-filtered_gdp_df = gdp_df[
-    (gdp_df['Country Code'].isin(selected_countries))
-    & (gdp_df['Year'] <= to_year)
-    & (from_year <= gdp_df['Year'])
+    # Liste des KPI avec des éléments à puces
+    st.markdown("""
+    - **Notes** entre 6 et 10
+    - **Nombre de votes** : minimum de 10.000
+    - **Langue** : Française
+    - **Type de titre** : Films
+    - **Durée** > 60 minutes
+    - **Exclus films adultes**
+    """)
+
+
+
+
+def machine_learning():
+    st.header("Machine Learning")
+    st.write("Explications et implémentations des modèles de machine learning.")
+
+
+def systeme_recommandation():
+    st.header("Système de recommandation de films")
+    st.write("Exemple de système de recommandation basé sur des modèles ML.")
+
+
+
+
+
+
+
+
+# Charger la dataframe
+    link = 'https://raw.githubusercontent.com/Wills13storm/Movie-Recommendation-System/refs/heads/main/csv_final'
+# Chargement sécurisé des données
+    try:
+        df = pd.read_csv(link, sep=",", engine='python', index_col=0)
+        print("Fichier chargé avec succès.")
+        print(df.head())
+    except Exception as e:
+     print(f"Erreur lors du chargement : {e}")
+# Utilisation de get.dummies
+    df['genres_x'].str.get_dummies()
+    df = pd.concat([df, df['genres_x'].str.get_dummies()], axis=1)
+# Garder les colonnes utiles
+    numeric_columns = df.select_dtypes(include=['number'])
+# Normaliser les colonnes numériques
+    scaler = MinMaxScaler()
+    features = scaler.fit_transform(numeric_columns)
+# Normaliser les colonnes numériques (incluant la note moyenne)
+    scaler = MinMaxScaler()
+    df['averageRating_scaled'] = scaler.fit_transform(df[['averageRating']])  # Normalisation de la note moyenne
+# Ajouter la pondération de la note moyenne aux caractéristiques
+    features_with_rating = pd.concat([pd.DataFrame(features), df['averageRating_scaled']], axis=1).values
+# Modèle KNN
+    knn = NearestNeighbors(n_neighbors=10, metric='cosine')
+    knn.fit(features)
+# Fonction pour recommander des films
+    def films_recommandes(title, df, model, features):
+        title = title.strip().lower()
+    # Utilisation d'une correspondance insensible à la casse
+        matches = df[df['title_x'].str.lower().str.contains(title, na=False)]
+        if matches.empty:
+            return f"Le film '{title}' n'existe pas dans le dataset.", None
+    # Utiliser le premier titre correspondant
+        index = matches.index[0]
+        distances, indices = model.kneighbors([features[index]])
+        recommendations = df.iloc[indices[0]]['title_x'].tolist()
+        recommendations.remove(df.loc[index, 'title_x'])
+        return None, [df.loc[index, 'poster_path']] + [df.loc[i, 'poster_path'] for i in indices[0] if i != index]
+# Application Streamlit
+    st.title("Système de Recommandation de Films")
+# Barre de recherche
+    query = st.text_input("Entrez le titre d'un film :")
+    if query:
+    # Utilisation de votre fonction `films_recommandes`
+        error, posters = films_recommandes(query, df, knn, features)
+    # Afficher les recommandations
+        if error:
+            st.write(error)
+        else:
+            cols_per_row = 4  # Définir le nombre d'affiches par ligne
+            columns = st.columns(cols_per_row)
+            for idx, poster in enumerate(posters):
+                try:
+                # Générer l'URL complète de l'affiche
+                    image_url = f"https://image.tmdb.org/t/p/w500{poster}"
+                # Afficher dans la colonne correspondante
+                    with columns[idx % cols_per_row]:
+                     st.image(image_url, use_container_width=True)
+                # Commencer une nouvelle ligne après `cols_per_row` affiches
+                    if (idx + 1) % cols_per_row == 0:
+                        columns = st.columns(cols_per_row)  # Créer une nouvelle ligne
+                except IndexError:
+                    pass
+
+# Afficher les recommandations
+        if error:
+            st.write(error)
+        else:
+            cols_per_row = 4 # Définir le nombre d'affiches par ligne
+            columns = st.columns(cols_per_row)
+
+# Afficher dans la colonne correspondante
+            with columns[idx % cols_per_row]:
+                        st.image(image_url, use_container_width=True)
+                # Commencer une nouvelle ligne après `cols_per_row` affiches
+            if (idx + 1) % cols_per_row == 0:
+                        columns = st.columns(cols_per_row)  # Créer une nouvelle ligne
+
+
+
+
+
+
+
+
+
+
+
+
+def ameliorations():
+    st.header("Améliorations")
+    st.write("Suggestions et pistes pour améliorer le projet.")
+
+# Menu dans la barre latérale
+menu = [
+    "Présentation",
+    "Étude de marché",
+    "KPI",
+    "Machine Learning",
+    "Système de recommandation de films",
+    "Améliorations"
 ]
 
-st.header('GDP over time', divider='gray')
+# Sélection du menu
+choix = st.sidebar.selectbox("Navigation", menu)
 
-''
+# Logique pour afficher les pages
+if choix == "Présentation":
+    presentation()
+elif choix == "Étude de marché":
+    etude_de_marche()
+elif choix == "KPI":
+    kpi()
+elif choix == "Machine Learning":
+    machine_learning()
+elif choix == "Système de recommandation de films":
+    systeme_recommandation()
+elif choix == "Améliorations":
+    ameliorations()
 
-st.line_chart(
-    filtered_gdp_df,
-    x='Year',
-    y='GDP',
-    color='Country Code',
-)
-
-''
-''
 
 
-first_year = gdp_df[gdp_df['Year'] == from_year]
-last_year = gdp_df[gdp_df['Year'] == to_year]
+  
 
-st.header(f'GDP in {to_year}', divider='gray')
 
-''
 
-cols = st.columns(4)
 
-for i, country in enumerate(selected_countries):
-    col = cols[i % len(cols)]
 
-    with col:
-        first_gdp = first_year[first_year['Country Code'] == country]['GDP'].iat[0] / 1000000000
-        last_gdp = last_year[last_year['Country Code'] == country]['GDP'].iat[0] / 1000000000
 
-        if math.isnan(first_gdp):
-            growth = 'n/a'
-            delta_color = 'off'
-        else:
-            growth = f'{last_gdp / first_gdp:,.2f}x'
-            delta_color = 'normal'
 
-        st.metric(
-            label=f'{country} GDP',
-            value=f'{last_gdp:,.0f}B',
-            delta=growth,
-            delta_color=delta_color
-        )
+
+#    streamlit run Streamlit_projet_2.py
