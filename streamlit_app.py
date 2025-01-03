@@ -174,7 +174,7 @@ Pourquoi KNN ?:
 * Efficacité : Fonctionne bien avec des datasets riches en fonctionnalités comme le nôtre.
     """)
 
-code = """
+    code = """
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.neighbors import NearestNeighbors
@@ -207,7 +207,7 @@ def films_recommandes(title, df, model, features):
     return recommendations
 """
 
-st.code(code, language='python')
+    st.code(code, language='python')
 
 
 def systeme_recommandation():
