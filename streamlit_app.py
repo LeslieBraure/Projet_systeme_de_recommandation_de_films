@@ -221,7 +221,7 @@ def films_recommandes(title, df, model, features):
     return recommendations
 """
 
-    st.code(code, language='python')
+st.code(code, language='python')
 
 
 def systeme_recommandation():
