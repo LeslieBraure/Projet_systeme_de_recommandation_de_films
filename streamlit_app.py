@@ -20,10 +20,20 @@ def presentation():
         unsafe_allow_html=True
     )
     
-    # Centrer le logo avec st.image() et des colonnes
-    col1, col2, col3 = st.columns([1, 2, 1])  # Trois colonnes, celle du milieu est plus large
+
+# Créer deux colonnes
+    col1, col2 = st.columns(2)
+
+# Afficher l'image dans la première colonne
+    with col1:
+        st.image("logoPopCornCoders.jpg", use_container_width=True)
+
+# Afficher l'image dans la deuxième colonne
     with col2:
-        st.image("logoPopCornCoders.jpg", width=200)
+        st.image("logo WCS.png", use_container_width=True)
+
+
+
 
 # Centrer le texte "Bienvenue sur ce site..." avec st.markdown
     st.markdown(
