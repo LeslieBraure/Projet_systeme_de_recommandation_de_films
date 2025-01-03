@@ -118,16 +118,7 @@ def kpi():
     st.write("""
         Notre système de recommandations de films est basé sur les KPI suivants :
     """)
-
-    # Liste des KPI avec des éléments à puces
-    st.markdown("""
-    - **Notes** entre 6 et 10
-    - **Nombre de votes** : minimum de 10.000
-    - **Langue** : Française
-    - **Type de titre** : Films
-    - **Durée** > 60 minutes
-    - **Exclus films adultes**
-    """)
+    st.image("KPI.jpg", use_container_width=True)
 
 
 
