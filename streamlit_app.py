@@ -90,6 +90,21 @@ def presentation():
         st.image("scikitlearn.png", width=100)
 
 
+# Lien Google Drive
+    pdf_url = "https://drive.google.com/file/d/1-UyB01Wl4TSHdXKGvHSRLFcT-IYFx7-n/view?usp=sharing"
+
+# Télécharger le fichier PDF
+    response = requests.get(pdf_url)
+    pdf_content = response.content
+
+# Afficher un lien pour télécharger le PDF
+    st.write("[Cliquez ici pour visualiser la présentation](https://drive.google.com/file/d/1-UyB01Wl4TSHdXKGvHSRLFcT-IYFx7-n/view?usp=sharing)")
+
+
+
+
+
+
 def etude_de_marche():
     st.header("Étude de marché")
     st.write("Analyse détaillée du marché cible et des tendances.")
