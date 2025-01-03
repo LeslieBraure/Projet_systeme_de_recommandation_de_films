@@ -127,7 +127,7 @@ def machine_learning():
     st.header("Machine Learning")
     st.write("Explications et implémentations des modèles de machine learning.")
 
-        st.write("""
+    st.write("""
 Dans cette section, nous expliquons la mise en œuvre et le fonctionnement du modèle de machine learning utilisé pour alimenter notre système de recommandation de films.
 
 Étapes mises en œuvre: 
