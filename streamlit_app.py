@@ -18,6 +18,7 @@ import streamlit as st
 from streamlit_option_menu import option_menu
 from sklearn.neighbors import NearestNeighbors
 from sklearn.preprocessing import MinMaxScaler
+import streamlit_authenticator
 
 
 # Fonction pour chaque page
