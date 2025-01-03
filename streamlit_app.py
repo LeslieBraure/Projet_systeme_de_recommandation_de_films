@@ -33,15 +33,13 @@ def presentation():
         unsafe_allow_html=True
     )
 
-# Liste des prénoms avec une taille de police augmentée
-    st.markdown(
-        """
-        <p style="font-size: 40px; text-align: center;">
-            Benjamin, Leslie, Reem, William's
-        </p>
-        """, 
-        unsafe_allow_html=True
-    )
+
+# Afficher une image
+    st.image("Equipe.png", use_container_width=True)
+
+
+
+
 
 
  # Détail du projet
