@@ -317,7 +317,6 @@ def ameliorations():
 
 
    st.image("Axes améliorations.jpg", use_container_width=True)
-)
 
 
 
