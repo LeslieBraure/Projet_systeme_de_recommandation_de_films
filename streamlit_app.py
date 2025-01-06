@@ -315,8 +315,7 @@ def ameliorations():
     st.header("Améliorations")
     st.write("Suggestions et pistes pour améliorer le projet.")
 
-
-   st.image("Axesameliorations.jpg", use_container_width=True)
+    st.image("Axesameliorations.jpg", use_container_width=True)
 
 
 
