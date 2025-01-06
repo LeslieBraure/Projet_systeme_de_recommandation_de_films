@@ -100,8 +100,6 @@ def presentation():
 # Afficher un lien pour télécharger le PDF
     st.write("[Cliquez ici pour visualiser la présentation](https://drive.google.com/file/d/1-UyB01Wl4TSHdXKGvHSRLFcT-IYFx7-n/view?usp=sharing)")
 
-    ppt_url = "https://onedrive.live.com/personal/a334ffeb61b1adf5/_layouts/15/Doc.aspx?sourcedoc=%7Bd94ee4d0-388f-45b4-b02b-5bcca9dc5972%7D&action=default&redeem=aHR0cHM6Ly8xZHJ2Lm1zL3AvYy9hMzM0ZmZlYjYxYjFhZGY1L0VkRGtUdG1QT0xSRnNDdGJ6S25jV1hJQkJPdHdReERwZ2JKRkZLbnJhQVpRaVE&slrid=2de874a1-40c6-b000-0d9f-814949b0cf57&originalPath=aHR0cHM6Ly8xZHJ2Lm1zL3AvYy9hMzM0ZmZlYjYxYjFhZGY1L0VkRGtUdG1QT0xSRnNDdGJ6S25jV1hJQkJPdHdReERwZ2JKRkZLbnJhQVpRaVE_cnRpbWU9Y0ZRTTNHb3UzVWc&CID=f7a2083a-f5ad-43d0-8a0d-f7e457d072f5&_SRM=0:G:42&file=Projet%202%20Pop%20Corn%20Coders.pptx"
-
 
 
 
