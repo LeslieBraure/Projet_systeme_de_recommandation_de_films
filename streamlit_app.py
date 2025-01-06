@@ -147,44 +147,49 @@ def machine_learning():
     <p style="text-align: justify;">
         Dans cette section, nous expliquons la mise en œuvre et le fonctionnement du modèle de machine learning utilisé pour alimenter notre système de recommandation de films.
 
-Étapes mises en œuvre:
-
-<u><b>1 - Prétraitement des Données :</b></u>
+<u><b style="font-size: 20px; color: #0078D4;">Étapes mises en œuvre:</b></u>
+<ul>
+<li><b>Prétraitement des Données :</b>
 Normalisation des caractéristiques numériques, comme les notes moyennes, avec MinMaxScaler pour garantir une cohérence entre les différentes plages de données.
-Transformation des données de genres en colonnes binaires pour faciliter leur traitement.
+Transformation des données de genres en colonnes binaires pour faciliter leur traitement.</li>
 
-<u><b>2 - Choix du Modèle :</b></u>
+<li><b>Choix du Modèle :</b>
 Nous avons utilisé un modèle K-Nearest Neighbors (KNN) pour les recommandations.
-Le modèle calcule la similarité entre les films en fonction de caractéristiques comme les genres et les notes, en utilisant la similarité cosinus comme métrique de distance.
+Le modèle calcule la similarité entre les films en fonction de caractéristiques comme les genres et les notes, en utilisant la similarité cosinus comme métrique de distance.</li>
 
-<u><b>3 - Entraînement du Modèle :</b></u>
-Le modèle KNN a été entraîné pour trouver les 10 films les plus similaires à tout film donné dans le dataset.
+<li><b>Entraînement du Modèle :</b>
+Le modèle KNN a été entraîné pour trouver les 10 films les plus similaires à tout film donné dans le dataset.</li>
 
-<u><b>4- Fonction de Recommandation :</b></u>
+<li><b>Fonction de Recommandation :</b>
 L’utilisateur saisit un titre de film. Le modèle identifie les correspondances les plus proches et retourne une liste de films recommandés.
-Les recommandations sont triées et affichées pour la commodité de l’utilisateur.
+Les recommandations sont triées et affichées pour la commodité de l’utilisateur.</li>
+</ul>
 
-Caractéristiques Clés:
+<u><b style="font-size: 20px; color: #0078D4;">Caractéristiques Clés:</b></u>
+<ul>
+<li><b>Recommandations Précises :</b> La métrique de similarité cosinus garantit des suggestions très pertinentes.</li>
 
-* Recommandations Précises : La métrique de similarité cosinus garantit des suggestions très pertinentes.
-* Saisie Dynamique : Recherche insensible à la casse pour plus de facilité d’utilisation.
-* Intégration Transparente : Les résultats sont directement transmis à l’interface de l’application.
+<li><b>Saisie Dynamique :</b> Recherche insensible à la casse pour plus de facilité d’utilisation.</li>
 
-Pourquoi KNN ?:
+<li><b>Intégration Transparente :</b> Les résultats sont directement transmis à l’interface de l’application.</li>
+</ul>
+<u><b style="font-size: 20px; color: #0078D4;">Pourquoi KNN?</b></u>
+<ul>
+<li><b>Simplicité :</b> Facile à mettre en œuvre et à interpréter.</li>
 
-* Simplicité : Facile à mettre en œuvre et à interpréter.
-* Efficacité : Fonctionne bien avec des datasets riches en fonctionnalités comme le nôtre.
-    
-
+<li><b>Efficacité :</b> Fonctionne bien avec des datasets riches en fonctionnalités comme le nôtre.</li>
+</ul>
     </p>
     """, 
     unsafe_allow_html=True
 )
-
-
-    st.write("""
-        Voici le code utilisé pour le Machine Learning: 
-    """)
+    st.markdown("""
+        <u><b style="font-size: 20px; color: #0078D4;">
+        Voici le code utilisé pour le Machine Learning :</b></u> 
+                
+    """,
+    unsafe_allow_html=True
+    )
 
 
     code = """
