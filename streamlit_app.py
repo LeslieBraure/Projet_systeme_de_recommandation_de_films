@@ -316,14 +316,7 @@ def ameliorations():
     st.write("Suggestions et pistes pour améliorer le projet.")
 
 
-    st.markdown(
-    """
-        * Système de recommandation du film : lien hypertexte vers TMDB
-        * Création d’une application iOS / Android​
-​        * DataFrame actualisé quotidiennement de manière automatisée​
-    
-        """, 
-
+   st.image("Axes améliorations.jpg", use_container_width=True)
 )
 
 
