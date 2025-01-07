@@ -152,11 +152,11 @@ Normalisation des caractéristiques numériques, comme les notes moyennes, avec 
 Transformation des données de genres en colonnes binaires pour faciliter leur traitement.</li>
 
 <li><b>Choix du Modèle :</b>
-Nous avons utilisé un modèle K-Nearest Neighbors (KNN) pour les recommandations.
+Nous avons utilisé un modèle Nearest Neighbors (NN) pour les recommandations.
 Le modèle calcule la similarité entre les films en fonction de caractéristiques comme les genres et les notes, en utilisant la similarité cosinus comme métrique de distance.</li>
 
 <li><b>Entraînement du Modèle :</b>
-Le modèle KNN a été entraîné pour trouver les 10 films les plus similaires à tout film donné dans le dataset.</li>
+Le modèle NN a été entraîné pour trouver les 10 films les plus similaires à tout film donné dans le dataset.</li>
 
 <li><b>Fonction de Recommandation :</b>
 L’utilisateur saisit un titre de film. Le modèle identifie les correspondances les plus proches et retourne une liste de films recommandés.
@@ -171,7 +171,7 @@ Les recommandations sont triées et affichées pour la commodité de l’utilisa
 
 <li><b>Intégration Transparente :</b> Les résultats sont directement transmis à l’interface de l’application.</li>
 </ul>
-<u><b style="font-size: 20px; color: #0078D4;">Pourquoi KNN?</b></u>
+<u><b style="font-size: 20px; color: #0078D4;">Pourquoi NN?</b></u>
 <ul>
 <li><b>Simplicité :</b> Facile à mettre en œuvre et à interpréter.</li>
 
